@@ -55,7 +55,7 @@
 {
 	fail: true,
 	data: {
-		errno: 1162,
+		errno: 1061,
 		msg: "존재하지 않는 alias 입니다."
 	}
 }
@@ -85,7 +85,7 @@
 {
 	fail: true,
 	data: {
-		errno: 1162,
+		errno: 1061,
 		msg: "존재하지 않는 alias 입니다."
 	}
 }
@@ -112,7 +112,7 @@
 {
 	fail: true,
 	data: {
-		errno: 1162,
+		errno: 1061,
 		msg: "존재하지 않는 alias 입니다."
 	}
 }
