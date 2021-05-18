@@ -15,7 +15,12 @@
 ```
 #### Response Success
 ```javascript
-{ fail: false }
+{ 
+	fail: false,
+  	data: {
+		alias: "deadbeef"
+	}
+}
 ```
 #### Response Fail
 ```javascript
