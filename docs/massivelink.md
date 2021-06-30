@@ -54,11 +54,13 @@
 #### Response Success
 ```javascript
 {	fail: false,
-	id: 1,
-	name: 'My First Massivelink',
-	click: 0,
-	date: '2021-06-30 16:07',
-	status: 1
+	data: {
+		id: 1,
+		name: 'My First Massivelink',
+		click: 0,
+		date: '2021-06-30 16:07',
+		status: 1
+	}
 }
 ```
 #### Response Fail
@@ -102,14 +104,16 @@
 // [order, short, linkId] 순입니다. linkId는 /user/api/readLinkById 을 통해서 
 // 좀 더 자세한 정보를 얻어올 수 있습니다.
 {	fail: false,
-	links: [
-		[1, 'custom1', 12],
-		[2, 'Axzvg', 13],
-		[3, 'BxCvx', 15],
-		[4, 'TxCv4', 22],
-		[5, 'U6RvZ', 27],
-		...
-	]
+	data: {
+		links: [
+			[1, 'custom1', 12],
+			[2, 'Axzvg', 13],
+			[3, 'BxCvx', 15],
+			[4, 'TxCv4', 22],
+			[5, 'U6RvZ', 27],
+			...
+		]
+	}
 }
 ```
 #### Response Fail
