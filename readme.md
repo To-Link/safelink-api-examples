@@ -1,33 +1,51 @@
 # Safelink API Example
 
-## URL
+## Link
 
 ### /user/api/createLink
 #### Request
 링크를 생성하기 위해서는 아래와 같은 JSON 형태로 POST method을 통해 서버와 통신해야합니다.
 ```javascript
-// If url not includes a protocal then it is considered http.
+/**
+ * POST				/user/api/createLink
+ * HOST:			<Your domain>
+ * Content-Type:	application/json
+ */
 {	
-	apiKey: "Your api key.",
-	alias: "deadbeef",
+	apiKey: "<Your API key>",
+	domain: "<Your domain>",
 	url: "https://www.google.com/search?q=vo.la"
 }
+/** Alway custom alias including '_' symbol at last of string. */
+{	
+	apiKey: "<Your API key>",
+	domain: "<Your domain>",
+	url: "https://search.naver.com/search.naver?query=vo.la",
+	custom:  "보라_"
+}
 ```
+
 #### Response Success
 ```javascript
 { 
 	fail: false,
   	data: {
-		alias: "deadbeef"
+		alias: "zXc4f"
+	}
+}
+
+{ 
+	fail: false,
+  	data: {
+		alias: "보라_"
 	}
 }
 ```
 #### Response Fail
 ```javascript
 {
-	fail: true,
-	data: {
-		errno: 1062,
+	fail: {
+		errno: 1101,
 		msg: "이미 등록된 alias 입니다."
 	}
 }
@@ -37,16 +55,22 @@
 
 ### /user/api/readLink
 링크 정보를 얻기 위해서는 아래와 같은 JSON 형태로 POST method을 통해 서버와 통신해야합니다.
+
 #### Request
 ```javascript
+/**
+ * POST				/user/api/readLink
+ * HOST:			<Your domain>
+ * Content-Type:	application/json
+ */
 {	
 	apiKey: "Your api key.",
-	alias: "deadbeef"
+	domain: "<Your domain>",
+	alias: "zXc4f"
 }
 ```
 #### Response Success
 ```javascript
-// If url not includes a protocal then it is considered http.
 {	fail: false,
 	data: {
 		url: "https://www.google.com/search?q=vo.la",
@@ -58,9 +82,8 @@
 #### Response Fail
 ```javascript
 {
-	fail: true,
-	data: {
-		errno: 1061,
+	fail: {
+		errno: 1102,
 		msg: "존재하지 않는 alias 입니다."
 	}
 }
@@ -72,12 +95,17 @@
 링크 정보를 업데이트 하기 위해서는 아래와 같은 JSON 형태로 POST method을 통해 서버와 통신해야합니다.
 #### Request
 ```javascript
-// If url not includes a protocal then it is considered http.
+/**
+ * POST				/user/api/updateLink
+ * HOST:			<Your domain>
+ * Content-Type:	application/json
+ */
 {	
-	apiKey: "Your api key.",
-	alias: "deadbeef",
+	apiKey: "<Your API key>",
+	alias: "zXc4f",
 	update: {
-		url: "https://search.naver.com/search.naver?query=vo.la"
+		url: "https://search.naver.com/search.naver?query=vo.la",
+		custom: "보라색_"
 	}
 }
 ```
@@ -88,9 +116,15 @@
 #### Response Fail
 ```javascript
 {
-	fail: true,
-	data: {
-		errno: 1061,
+	fail: {
+		errno: 1101,
+		msg: "이미 등록된 Alias 입니다."
+	}
+}
+
+{
+	fail: {
+		errno: 1102,
 		msg: "존재하지 않는 alias 입니다."
 	}
 }
@@ -102,10 +136,14 @@
 링크을 삭제 하기 위해서는 아래와 같은 JSON 형태로 POST method을 통해 서버와 통신해야합니다.
 #### Request
 ```javascript
-// If url not includes a protocal then it is considered http.
+/**
+ * POST				/user/api/updateLink
+ * HOST:			<Your domain>
+ * Content-Type:	application/json
+ */
 {	
-	apiKey: "Your api key.",
-	alias: "deadbeef"
+	apiKey: "<Your API key>",
+	alias: "보라_"
 }
 ```
 #### Response Success
@@ -115,13 +153,18 @@
 #### Response Fail
 ```javascript
 {
-	fail: true,
-	data: {
-		errno: 1061,
-		msg: "존재하지 않는 alias 입니다."
+	fail: {
+		errno: 2000,
+		msg: "Internal Server Error"
 	}
 }
 ```
 ---
 
 ### ERROR Codes
+errono | msg 
+|---| ---
+1000 | 사용할 수 없는 Domain 입니다.
+1101 | 이미 등록된 Alias 입니다.
+1102 | 존재 하지 않는 Alias 입니다.
+2000 | Internal Server Error
