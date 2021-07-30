@@ -65,22 +65,19 @@
  */
 {	
     apiKey: "<Your API key>",
+    domain: "<Your domain>",
     links: [
         {
-            domain: "<Your domain>",
-            url: "https://search.naver.com/search.naver?query=순"
+            url: "https://search.naver.com/search.naver?query=1"
         },
         {
-            domain: "<Your domain>",
-            url: "https://search.naver.com/search.naver?query=서"
+            url: "https://search.naver.com/search.naver?query=2"
         },
         {
-            domain: "<Your domain>",
-            url: "https://search.naver.com/search.naver?query=대"
+            url: "https://search.naver.com/search.naver?query=3"
         },
         {
-            domain: "<Your domain>",
-            url: "https://search.naver.com/search.naver?query=로"
+            url: "https://search.naver.com/search.naver?query=4"
         }
     ]
 }
